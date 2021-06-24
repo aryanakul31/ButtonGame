@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.aryanakul31.black.viewmodels.Buttons" />
+
+        <variable
+            name="viewModel"
+            type="com.aryanakul31.black.viewmodels.MainActivityVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.MainActivity">
+
+        <TextView
+            android:id="@+id/tvToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center"
+            android:text="@{`Score: `+viewModel.score}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Score: 5" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btRed"
+            customBackground="@{viewModel.greyButtonPos==Buttons.RED}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{viewModel::onClick}"
+            app:layout_constraintBottom_toTopOf="@id/btYellow"
+            app:layout_constraintEnd_toStartOf="@id/btBlue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvToolbar" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btBlue"
+            customBackground="@{viewModel.greyButtonPos==Buttons.BLUE}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{viewModel::onClick}"
+            app:layout_constraintBottom_toBottomOf="@id/btRed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btRed"
+            app:layout_constraintTop_toTopOf="@id/btRed" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btYellow"
+            customBackground="@{viewModel.greyButtonPos==Buttons.YELLOW}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{viewModel::onClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btGreen"
+            app:layout_constraintStart_toStartOf="@id/btRed"
+            app:layout_constraintTop_toBottomOf="@id/btRed" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btGreen"
+            customBackground="@{viewModel.greyButtonPos==Buttons.GREEN}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{viewModel::onClick}"
+            app:layout_constraintBottom_toBottomOf="@id/btYellow"
+            app:layout_constraintEnd_toEndOf="@id/btBlue"
+            app:layout_constraintStart_toEndOf="@id/btYellow"
+            app:layout_constraintTop_toTopOf="@id/btYellow" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
